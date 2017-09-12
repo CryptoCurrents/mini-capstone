@@ -1,6 +1,20 @@
 class ProductsController < ApplicationController
   def index
     @products = Product.all
+
+    sort_attribute = params[:sort]
+    order_attribute = params[:sort_order]
+    discount_amount = params[:discount]
+
+    if discount_amount
+      @products = @products.where("price < ?", discount_amount)
+    end
+
+    if sort_attribute && order_attribute
+      @products = @products.order({sort_attribute => order_attribute})
+    elsif sort_attribute
+      @products = @products.order(sort_attribute)
+    end
   end
 
   def new
@@ -46,4 +60,12 @@ class ProductsController < ApplicationController
     flash[:warning] = "Product Destroyed"
     redirect_to "/"
   end
+
+  def random
+    product_id = Product.all.sample.id
+    redirect_to "/products/#{product_id}"
+  end
 end
+
+
+

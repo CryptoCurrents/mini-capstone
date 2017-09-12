@@ -10,4 +10,13 @@ class Product < ApplicationRecord
   def total
     tax + price
   end
+
+  def self.random
+    products = Product.all
+    all_ids = []
+    products.each do |product|
+      all_ids << product.id
+    end
+    all_ids.sample
+  end
 end
