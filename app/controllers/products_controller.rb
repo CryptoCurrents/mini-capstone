@@ -18,7 +18,7 @@ class ProductsController < ApplicationController
   end
 
   def new
-    
+    @suppliers = Supplier.all
   end
 
   def create
@@ -26,7 +26,8 @@ class ProductsController < ApplicationController
                           name: params[:name],
                           description: params[:description],
                           image_url: params[:image_url],
-                          price: params[:price]
+                          price: params[:price],
+                          supplier_id: params[:supplier_id]
                           )
     product.save
     flash[:success] = "Product Created"
