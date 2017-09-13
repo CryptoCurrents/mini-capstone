@@ -1,0 +1,11 @@
+<h1>Suppliers</h1>
+
+<% @suppliers.each do |supplier| %>
+  <div>
+    <h2><a href="/suppliers/<%= supplier.id %>"><%= supplier.name %></a></h2>
+    <h4>Email: <%= supplier.email %></h4>
+    <h4>Phone: <%= supplier.phone %></h4>
+  </div>  
+<% end %>
+
+<%= link_to "Add Supplier", "/suppliers/new", class: "btn btn-primary" %>

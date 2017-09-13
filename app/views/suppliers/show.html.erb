@@ -1,0 +1,18 @@
+    <h1><%= @supplier.name %></h1>
+    <h3>Email: <%= @supplier.email %></h3>
+    <h3>Phone: <%= @supplier.phone %></h3>
+
+    <% if @supplier.products.any? %>
+      <h3>Products provided by this supplier</h3>
+      <ul>
+        <% @supplier.products.each do |product| %>
+          <li><a href="/products/<%= product.id %>"><%= product.name %></a></li>
+        <% end %>
+      </ul>
+    <% else %>
+      <h3>There are currently no products provided by this supplier in our store.</h3>
+    <% end %>
+
+    <%= link_to "Look at other suppliers", "/suppliers", class: "btn btn-primary" %>
+    <%= link_to "Edit this Supplier", "/suppliers/#{@supplier.id}/edit", class: "btn btn-warning" %>
+    <%= link_to "Delete This Supplier", "/suppliers/#{@supplier.id}", method: :delete, class: "btn btn-danger" %>

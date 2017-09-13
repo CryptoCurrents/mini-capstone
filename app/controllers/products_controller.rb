@@ -40,6 +40,7 @@ class ProductsController < ApplicationController
 
   def edit
     @product = Product.find_by(id: params[:id])
+    @suppliers = Supplier.all
   end
 
   def update
@@ -48,7 +49,8 @@ class ProductsController < ApplicationController
                               name: params[:name],
                               description: params[:description],
                               image_url: params[:image_url],
-                              price: params[:price]
+                              price: params[:price],
+                              supplier_id: params[:supplier_id]
                               )
     product.save
     flash[:success] = "Product Updated"
