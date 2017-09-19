@@ -1,0 +1,23 @@
+<section>
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+      <div class="product_single">
+        <h1>Create a new image:</h1>
+        <%= form_tag '/products', method: :post do %>
+          <div>
+            Name: <input type="text" name="url">
+          </div>
+          <div>
+            Product: 
+            <select name="product_id" class="form-field-dark">
+              <% @products.each do |product| %>
+                <option value="<%= product.id %>"><%= product.name %></option>
+              <% end %>
+            </select>
+          </div>
+          <input type="submit" value="Add Picture" class="btn btn-primary">
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>

@@ -25,7 +25,6 @@ class ProductsController < ApplicationController
     product = Product.new(
                           name: params[:name],
                           description: params[:description],
-                          image_url: params[:image_url],
                           price: params[:price],
                           supplier_id: params[:supplier_id]
                           )
@@ -48,7 +47,6 @@ class ProductsController < ApplicationController
     product.assign_attributes(
                               name: params[:name],
                               description: params[:description],
-                              image_url: params[:image_url],
                               price: params[:price],
                               supplier_id: params[:supplier_id]
                               )
