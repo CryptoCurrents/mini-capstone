@@ -39,6 +39,12 @@
             <li><a href="/?discount=50">Discount Items</a></li>
             <li><a href="/products/random">Random Product</a></li>
             <li class="divider"></li>
+            
+            <% Category.all.each do |category| %>
+              <li><a href="/products?category=<%= category.name %>"><%= category.name %> Category</a></li>
+            <% end %>
+
+            <li class="divider"></li>
             <% if current_user %>
               <li><a href="/logout">Log Out</a></li>
             <% else %>
