@@ -24,6 +24,7 @@ class ProductsController < ApplicationController
   end
 
   def new
+    redirect_to "/" unless current_user && current_user.admin
     @suppliers = Supplier.all
   end
 

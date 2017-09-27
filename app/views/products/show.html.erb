@@ -18,14 +18,14 @@
               <img src="<%= image.url %>" alt="<%= @product.name %>" class="img-responsive">
            <% end %>
 
-           <%= form_tag "/orders", method: :post do %>
+           <%= form_tag "/carted_products", method: :post do %>
               <div>
                 Quantity: <input type="text" name="quantity">
               </div>
               <div>
                 <input type="hidden" name="product_id" value="<%= @product.id %>">
               </div>
-              <input type="submit" value="Buy Now!">
+              <input type="submit" value="Add to Cart">
            <% end %>
             
            <p>Description: <%= @product.description %></p>
