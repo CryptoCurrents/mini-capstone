@@ -1,4 +1,6 @@
 class ProductsController < ApplicationController
+  before_action :authenticate_admin!, only: [:new, :create, :edit, :update, :destroy]
+
   def index
     @products = Product.all
 
@@ -24,20 +26,25 @@ class ProductsController < ApplicationController
   end
 
   def new
-    redirect_to "/" unless current_user && current_user.admin
     @suppliers = Supplier.all
+    @product = Product.new
   end
 
   def create
-    product = Product.new(
+    @product = Product.new(
                           name: params[:name],
                           description: params[:description],
                           price: params[:price],
                           supplier_id: params[:supplier_id]
                           )
-    product.save
-    flash[:success] = "Product Created"
-    redirect_to "/products/#{product.id}"
+    if @product.save
+      flash[:success] = "Product Created"
+      redirect_to "/products/#{@product.id}"
+    else
+      @suppliers = Supplier.all
+      @errors = @product.errors.full_messages
+      render "new.html.erb"
+    end
   end
 
   def show

@@ -18,20 +18,27 @@
               <img src="<%= image.url %>" alt="<%= @product.name %>" class="img-responsive">
            <% end %>
 
-           <%= form_tag "/carted_products", method: :post do %>
-              <div>
-                Quantity: <input type="text" name="quantity">
-              </div>
-              <div>
-                <input type="hidden" name="product_id" value="<%= @product.id %>">
-              </div>
-              <input type="submit" value="Add to Cart">
+           <% if current_user %>           
+             <%= form_tag "/carted_products", method: :post do %>
+                <div>
+                  Quantity: <input type="text" name="quantity">
+                </div>
+                <div>
+                  <input type="hidden" name="product_id" value="<%= @product.id %>">
+                </div>
+                <input type="submit" value="Add to Cart">
+             <% end %>
+           <% else %>
+             <p>Please <a href="/login">Login</a> to Purchase Items</p>
            <% end %>
-            
-           <p>Description: <%= @product.description %></p>
-           <%= link_to "Edit", "/products/#{@product.id}/edit", class: "btn btn-success" %>
-           <%= link_to "Delete", "/products/#{@product.id}", {method: :delete, class: "btn btn-danger" }%>
 
+
+           <p>Description: <%= @product.description %></p>
+           
+           <% if current_user && current_user.admin %>
+             <%= link_to "Edit", "/products/#{@product.id}/edit", class: "btn btn-success" %>
+             <%= link_to "Delete", "/products/#{@product.id}", {method: :delete, class: "btn btn-danger" }%>
+           <% end %>
 
            <h5>Categories</h5>
            <ul>
