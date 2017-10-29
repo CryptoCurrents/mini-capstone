@@ -1,19 +1,19 @@
-User.create!([
-  {name: "Suzzie Q", email: "susan@gmail.com", password: "sue", password_confirmation: "sue", admin: false},
-  {name: "Joe Cool", email: "joe@gmail.com", password: "joe", password_confirmation: "joe", admin: true}
-])
-Category.create!([
-  {name: "Expensive"},
-  {name: "Cheap"},
-  {name: "Wearable"},
-  {name: "Dangerous"},
-  {name: "Special Occasion"}
-])
-Supplier.create!([
-  {name: "Bob's Big Nerd Emplorium", email: "bigbob@empire.co", phone: "801-555-9878"},
-  {name: "Collections and Stuff", email: "susan@gmail.com", phone: "310-555-9999"},
-  {name: "Rick's Van Behind Wendy's", email: "rickt231@yahoo.com", phone: "212-989-5556"}
-])
+# User.create!([
+#   {name: "Suzzie Q", email: "susan@gmail.com", password: "sue", password_confirmation: "sue", admin: false},
+#   {name: "Joe Cool", email: "joe@gmail.com", password: "joe", password_confirmation: "joe", admin: true}
+# ])
+# Category.create!([
+#   {name: "Expensive"},
+#   {name: "Cheap"},
+#   {name: "Wearable"},
+#   {name: "Dangerous"},
+#   {name: "Special Occasion"}
+# ])
+# Supplier.create!([
+#   {name: "Bob's Big Nerd Emplorium", email: "bigbob@empire.co", phone: "801-555-9878"},
+#   {name: "Collections and Stuff", email: "susan@gmail.com", phone: "310-555-9999"},
+#   {name: "Rick's Van Behind Wendy's", email: "rickt231@yahoo.com", phone: "212-989-5556"}
+# ])
 Product.create!([
   {name: "Lightsaber", price: "270.1", description: "Part laser, part samuri sword, all awesome. The lightsaber is an elogant weapon for a more civilized age, not nearly as clumsy as a blaster", supplier_id: 1},
   {name: "WNYX Mug", price: "1.5", description: "Get your morning news once you wake up with a cup of joe from... well Joe. He made it with his homemade duct tape", supplier_id: 2},
